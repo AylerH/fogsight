@@ -4,5 +4,6 @@ pydantic
 openai
 jinja2
 pytz
-google-genai
+google-generativeai>=0.3.0
+dashscope
 requests

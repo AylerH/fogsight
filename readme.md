@@ -1,4 +1,4 @@
-# Fogsight (雾象) [**English**](./readme_en.md) | [**中文**](./readme.md)
+# Fogsight (雾象) [**English**](./readme_en.md) | [**中文**](./readme.md)
 
 
 <p align="center">
@@ -11,6 +11,7 @@
 
 将雾象部署在本地后，您只需输入词语，点击生成，便可得到动画。
 
+> **更新**: 现在支持多种大模型，包括Google Gemini和阿里云通义千问2.5！
 
 <p align="center">
   <img src="https://github.com/hamutama/caimaopics/raw/main/fogsight/1.png"
@@ -79,7 +80,10 @@
 
 * Python 3.9+  
 * 一个现代网络浏览器 (如 Chrome, Firefox, Edge)  
-* 大语言模型的 API 密钥。我们推荐您使用 Google Gemini 2.5。  
+* 大语言模型的 API 密钥。我们支持以下模型：
+  * Google Gemini 2.5 Pro
+  * 阿里云通义千问 2.5
+  * OpenAI 兼容的API (如 GPT-4, Claude 等)
 
 ### 安装与运行
 
@@ -97,11 +101,37 @@
 
 3. **配置API密钥:**
 
+   复制`demo-credentials.json`为`credentials.json`并编辑:
+
    ```bash
    cp demo-credentials.json credentials.json
-   # 复制 demo-credentials.json 文件并重命名为 credentials.json
-   # 编辑 credentials.json 文件，填入您的 API_KEY 和 BASE_URL。
-   # **请注意**，我们使用的是与 OpenAI 兼容的 SDK，但您仍应使用Gemini 2.5 pro
+   ```
+
+   根据您想使用的大模型，编辑`credentials.json`文件:
+
+   **使用Google Gemini:**
+   ```json
+   {
+       "API_KEY": "YOUR_GEMINI_API_KEY",
+       "MODEL": "gemini-2.5-pro"
+   }
+   ```
+
+   **使用阿里云通义千问:**
+   ```json
+   {
+       "API_KEY": "YOUR_DASHSCOPE_API_KEY",
+       "MODEL": "qwen2.5-72b-instruct"
+   }
+   ```
+
+   **使用OpenAI兼容API:**
+   ```json
+   {
+       "API_KEY": "sk-YOUR_API_KEY",
+       "BASE_URL": "https://api.openai.com/v1/",
+       "MODEL": "gpt-4-turbo"
+   }
    ```
 
 4. **一键启动:**
